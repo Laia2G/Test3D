@@ -6,12 +6,11 @@ public class ObjectMovementController : MonoBehaviour
 {
     public GameObject cars;
     public float velocity;
-    // Start is called before the first frame update
-    
+    //public Rigidbody _rb;
 
-    // Update is called once per frame
+    
     void Update()
     {
-        cars.GetComponent<Rigidbody2D>().AddForce(transform.right * velocity);
+        cars.GetComponent<Rigidbody>().AddForce(transform.right * velocity);
     }
 }

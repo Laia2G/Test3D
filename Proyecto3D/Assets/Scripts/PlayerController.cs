@@ -25,5 +25,14 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector3.right * -2 * Time.deltaTime);
         }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Speed = 10;
+        }
+        else
+        {
+            Speed = 2;
+        }
     }
 }
