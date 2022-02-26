@@ -5,42 +5,63 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
-    //public Rigidbody _rb;
+    public float velocity;
+    public float velocityModifyer;
+    public Rigidbody _rb;
+    public LayerMask groundPlayer;
+    public Transform groundChecker;
+    public float GCradius;
+    
     // Start is called before the first frame update
     void Start()
     {
-      //  _rb = GetComponent<Rigidbody>();
+      _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        Vector3 vel = _rb.velocity;
+        vel = new Vector3(vel.x, vel.y, (velocityModifyer + Speed));
+
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * 2 * Time.deltaTime);
+            vel = new Vector3((velocityModifyer + Speed), vel.y, vel.z);
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.right * -2 * Time.deltaTime);
+            vel = new Vector3(-(velocityModifyer + Speed), vel.y, vel.z);
         }
-
         if (Input.GetKey(KeyCode.W))
         {
-            Speed = 10;
+            Speed = 5;
         }
         else
         {
             Speed = 2;
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
-            Speed = 10;
+            _rb.AddForce(Vector3.up * velocity, ForceMode.Impulse);
         }
-        else
-        {
-            Speed = 2;
-        }
+
+        _rb.velocity = vel;
+    }
+
+    private bool IsGrounded()
+    {
+        Collider[] checking = Physics.OverlapSphere(groundChecker.position, GCradius, groundPlayer);
+
+        
+        return checking.Length > 0;
+        
+        
+        //return Physics.CheckCapsule(colliderSphere.bounds.center, new Vector3(colliderSphere.bounds.center.x, colliderSphere.bounds.min.y, colliderSphere.bounds.center.z), colliderSphere.radius * 0.9f, groundPlayer);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundChecker.position, GCradius);
     }
 }

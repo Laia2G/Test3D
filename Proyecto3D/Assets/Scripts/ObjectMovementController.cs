@@ -9,7 +9,12 @@ public class ObjectMovementController : MonoBehaviour
     //public Rigidbody _rb;
 
     
-    void Update()
+    /*void Update()
+    {
+        cars.GetComponent<Rigidbody>().AddForce(transform.right * velocity);
+    }*/
+
+    private void OnTriggerEnter(Collider other)
     {
         cars.GetComponent<Rigidbody>().AddForce(transform.right * velocity);
     }

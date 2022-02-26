@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PuddleController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float velocityMultiplyer;
+    private void OnTriggerStay(Collider other)
     {
+        PlayerController playerSlow = other.GetComponent<PlayerController>();
+        if (playerSlow)
+        {
+            playerSlow.velocityModifyer = velocityMultiplyer * playerSlow.Speed;
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        PlayerController playerSlow = other.GetComponent<PlayerController>();
+        if (playerSlow)
+        {
+            playerSlow.velocityModifyer = 0;
+        }
     }
 }
