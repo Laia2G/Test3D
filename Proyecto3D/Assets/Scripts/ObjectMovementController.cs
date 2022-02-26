@@ -16,6 +16,7 @@ public class ObjectMovementController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        cars.SetActive(true);
         cars.GetComponent<Rigidbody>().AddForce(transform.right * velocity);
     }
 }

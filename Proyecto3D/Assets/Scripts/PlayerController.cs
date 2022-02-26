@@ -43,7 +43,9 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
-            _rb.AddForce(Vector3.up * velocity, ForceMode.Impulse);
+            //_rb.AddForce(Vector3.up * velocity, ForceMode.Impulse);
+            vel = new Vector3(vel.x, velocity, vel.z);
+            //Speed = 2;
         }
 
         _rb.velocity = vel;
