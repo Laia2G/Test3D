@@ -30,9 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LvLSelection.unity
     guid: d169b662cd4a6c847ba70e98894855f6
   - enabled: 1
-    path: Assets/Scenes/LvL1 1.unity
+    path: Assets/Scenes/LvL2.unity
     guid: ad2e3d3fec35d9d42b050a4ae14982c9
   - enabled: 1
-    path: Assets/Scenes/LvL1 3.unity
+    path: Assets/Scenes/LvL3.unity
     guid: 701ad1523a4f19248a398e1cd415163d
   m_configObjects: {}

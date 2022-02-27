@@ -18,10 +18,22 @@ public class Life : MonoBehaviour
     //public Text textovidas;
     //public int vidaMax = 100;
     public float vida;
+    void OnEnable()
+    {
+        GetComponent<GodModeSystem>().OnLife += AddLIFE;
+        //GetComponent<BalasSystem>().OnDeath2 += Muerte;
+    }
+
+    void OnDisable()
+    {
+        GetComponent<GodModeSystem>().OnLife -= AddLIFE;
+        //GetComponent<BalasSystem>().OnDeath2 -= Muerte;
+    }
     void Start()
     {
         OnMandar(vida);
         _anim = GetComponentInChildren<Animator>();
+
         //_CM = GetComponent<ControlarMenu>();
     }
     private void Update()
@@ -50,6 +62,11 @@ public class Life : MonoBehaviour
             //_anim.SetBool("die", true);
         }
 
+    }
+
+    public void AddLIFE(float getlife)
+    {
+        vida = vida + getlife;
     }
 
     /*public void Darvida(int heal)
