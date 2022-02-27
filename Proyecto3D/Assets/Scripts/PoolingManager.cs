@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,13 +13,6 @@ public class PooledItems
 }
 public class PoolingManager : MonoBehaviour
 {
-    //public static PoolingManager _instance;
-    //public static PoolingManager Instance => _instance;
-
-    //public List<GameObject> pooledObjects;
-    //public GameObject objectToPool;
-    //public int amount;
-
     private static PoolingManager _instance;
 
     public static PoolingManager Instance
@@ -57,7 +49,6 @@ public class PoolingManager : MonoBehaviour
             }
         }
     }
-
     public GameObject GetPooledObject(string name)
     {
         List<GameObject> tmp = _items[name];
@@ -70,64 +61,4 @@ public class PoolingManager : MonoBehaviour
         }
         return null;
     }
-
-    /*void Awake()
-    {
-        if(_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
-
-    private void Start()
-    {
-        pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        
-        for(int i = 0; i < amount; i++)
-        {
-            tmp = Instantiate(objectToPool);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
-        }
-    }
-
-    public GameObject GetPooledObject()
-    {
-        for(int i = 0; i < amount; i++)
-        {
-            if(!pooledObjects[i].activeInHierarchy)
-            {
-                return pooledObjects[i];
-            }
-        }
-        return null;
-    }*/
 }
-
-/*
- [Serializable]
-public class PooledItems
-{
-    public string Name;
-    public GameObject objectToPool;
-    public int amount;
-}
-private static PoolingManager _instance;
-public static PoolingManager Instance
-{
-    get
-    {
-        if()
-        {
-              _instance = FindObjectOfType<PoolingManager>();          
-        }
-        return _instance
-    }
-}
- */

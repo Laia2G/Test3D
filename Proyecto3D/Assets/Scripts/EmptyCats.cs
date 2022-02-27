@@ -10,16 +10,16 @@ public class EmptyCats : MonoBehaviour
         public Transform emptyCatsPoint;
         public FollowController cat;
     }
-    //bool follower;
+    public AudioSource _as;
     [SerializeField]
     public emptyCat[] positions;
-    // Start is called before the first frame update
     public Transform AddCat(FollowController catHollow)
     {
+        _as.Play();
         for (int i = 0; i < positions.Length; i++)
         {
             if (!positions[i].cat)
-            {
+            {                
                 positions[i].cat = catHollow;
                 return positions[i].emptyCatsPoint;
             }
@@ -27,8 +27,5 @@ public class EmptyCats : MonoBehaviour
         return null;
     }
 
-    public void EndEmpty()
-    {
-
-    }
+    
 }

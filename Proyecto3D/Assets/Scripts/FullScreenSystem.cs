@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class FullScreenSystem : MonoBehaviour
 {
     public Toggle _toggle;
-    // Start is called before the first frame update
     void Start()
     {
         if (Screen.fullScreen)
@@ -18,13 +17,6 @@ public class FullScreenSystem : MonoBehaviour
             _toggle.isOn = false;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ActivateFS(bool FScreen)
     {
         Screen.fullScreen = FScreen;

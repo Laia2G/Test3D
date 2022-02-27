@@ -11,14 +11,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundPlayer;
     public Transform groundChecker;
     public float GCradius;
-    
-    // Start is called before the first frame update
+    public AudioSource _as;
     void Start()
     {
       _rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 vel = _rb.velocity;
@@ -44,8 +42,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             //_rb.AddForce(Vector3.up * velocity, ForceMode.Impulse);
+            _as.Play();
             vel = new Vector3(vel.x, velocity, vel.z);
-            //Speed = 2;
         }
 
         _rb.velocity = vel;
@@ -56,10 +54,8 @@ public class PlayerController : MonoBehaviour
         Collider[] checking = Physics.OverlapSphere(groundChecker.position, GCradius, groundPlayer);
 
         
-        return checking.Length > 0;
+        return checking.Length > 0;       
         
-        
-        //return Physics.CheckCapsule(colliderSphere.bounds.center, new Vector3(colliderSphere.bounds.center.x, colliderSphere.bounds.min.y, colliderSphere.bounds.center.z), colliderSphere.radius * 0.9f, groundPlayer);
     }
 
     private void OnDrawGizmos()

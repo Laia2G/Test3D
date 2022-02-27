@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DeathPlayerSystem : DeathSystem
 {
+    public Canvas canvas;
     public override void Muerte()
     {
-        //gameObject.SetActive(false);
         canvas.GetComponent<MenuController>().Game_Over();
     }
 }

@@ -5,20 +5,28 @@ using System;
 
 public class GodModeSystem : MonoBehaviour
 {
-    public GameObject cats;
-    public Transform emptyCat;
-    public event Action<float> OnLife = delegate { };
-
-    public void AddCats()
-    {
-        EmptyCats _hollowCat = cats.GetComponent<EmptyCats>();
-        if (_hollowCat)
+    public static bool lifeInmortal;
+    public GameObject cat;
+    public GameObject player;
+    public int cats = 0;
+    public void AddLife()
+    {      
+        if (!lifeInmortal)
         {
-            //emptyCat = _hollowCat.AddCat(cats);
+            lifeInmortal = true;
+        }
+        else
+        {
+            lifeInmortal = false;
         }
     }
-    public void AddLife()
+
+    public void AddCat()
     {
-        OnLife(100);
+        if (cats <= 2)
+        {
+            Instantiate(cat, player.transform.position, player.transform.rotation);
+            cats++;
+        }        
     }
 }

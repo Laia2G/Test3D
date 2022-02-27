@@ -7,19 +7,6 @@ using UnityEngine.Audio;
 
 public class MenuController : MonoBehaviour
 {
-   // public Toggle _toggle;
-   // public AudioMixer audioMixer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Jugar_al_lvl()
     {
 
@@ -80,7 +67,5 @@ public class MenuController : MonoBehaviour
 
         Application.Quit();
 
-    }
-
-   
+    }   
 }

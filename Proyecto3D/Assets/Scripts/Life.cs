@@ -7,34 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class Life : MonoBehaviour
 {
-    //public ParticleSystem particulas;
-    //int Damages;
     
     public event Action OnDeath = delegate { };
     public event Action<float> OnMandar = delegate { };
     private float timer = 10f;
     private Animator _anim;
-    //private ControlarMenu _CM;
-    //public Text textovidas;
-    //public int vidaMax = 100;
     public float vida;
-    void OnEnable()
-    {
-        GetComponent<GodModeSystem>().OnLife += AddLIFE;
-        //GetComponent<BalasSystem>().OnDeath2 += Muerte;
-    }
-
-    void OnDisable()
-    {
-        GetComponent<GodModeSystem>().OnLife -= AddLIFE;
-        //GetComponent<BalasSystem>().OnDeath2 -= Muerte;
-    }
     void Start()
     {
         OnMandar(vida);
         _anim = GetComponentInChildren<Animator>();
-
-        //_CM = GetComponent<ControlarMenu>();
     }
     private void Update()
     {
@@ -43,23 +25,19 @@ public class Life : MonoBehaviour
 
     public void Quitarvida(float damage)
     {
-        //Debug.Log("antes de vida 0");
-        //if (timer <= 0)
-        
+        if (GodModeSystem.lifeInmortal == false)
+        {
             vida = vida - damage;
             OnMandar(vida);
             timer = 10f;
+        }            
         
         if (vida <= 0)
         {
-            //Debug.Log("vida 0");
             vida = 0;
             
             OnMandar(vida);
             OnDeath();
-            
-            //_CM.Game_Over();
-            //_anim.SetBool("die", true);
         }
 
     }
@@ -68,16 +46,4 @@ public class Life : MonoBehaviour
     {
         vida = vida + getlife;
     }
-
-    /*public void Darvida(int heal)
-    {
-        vida += heal;
-        OnMandar(vida);
-        if (vida > vidaMax)
-        {
-            vida = vidaMax;
-            OnMandar(vida);
-        }
-
-    }*/
 }

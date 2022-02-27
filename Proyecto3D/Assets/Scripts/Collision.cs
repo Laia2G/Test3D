@@ -9,7 +9,6 @@ public class Collision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //if(other.gameObject.GetComponent<Life>() != null)
         Life hitdamage = other.gameObject.GetComponent<Life>();
         hitdamage?.Quitarvida(damage);
     }
